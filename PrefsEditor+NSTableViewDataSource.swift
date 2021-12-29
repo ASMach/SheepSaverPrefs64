@@ -1,8 +1,13 @@
+//
+//  PrefsEditor.swift
+//  SheepShaverPrefs
+//  Preferences editing in Cocoa on Mac OS X
+//
+//  Created by Alonzo Machiraju on 12/28/21.
+//  Updated from PrefsEditor.h, created by Alexei Svitkine, Copyright (C) 2006
+//
+
 /*
- *  main.m - Preferences editing in Cocoa on Mac OS X
- *
- *  Copyright (C) 2006 Alexei Svitkine
- *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
@@ -18,9 +23,15 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#import <Cocoa/Cocoa.h>
+import Foundation
+import AppKit
 
-int main(int argc, char *argv[])
-{
-    return NSApplicationMain(argc,  (const char **) argv);
+extension PrefsEditor : NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return diskArray.count
+    }
+    
+    func func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        return diskArray[row]
+    }
 }
